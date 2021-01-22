@@ -54,10 +54,11 @@
 						PolyLine = Input {
 							Value = Polyline {
 								Points = {
-									{ Linear = true, LockY = true, X = 0, Y = -0.608, RX = 0, RY = 0.0926666666666667 },
+									{ Linear = true, LockY = true, X = 0, Y = -0.608, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = 0, Y = -0.608, LX = 0, LY = 0, RX = 0, RY = 0.0926666666666667 },
 									{ Linear = true, LockY = true, X = 0, Y = -0.33, LX = 0, LY = -0.0926666666666667, RX = 0, RY = 0 },
-									{ Linear = true, LockY = true, X = 0, Y = -0.330000013113022, LX = -0, LY = -0, RX = 0, RY = 0 },
-									{ Linear = true, LockY = true, X = 0, Y = -0.330000013113022, LX = -0, LY = -0, RX = 0, RY = 0.0153333377043406 },
+									{ Linear = true, LockY = true, X = 0, Y = -0.330000013113022, LX = 0, LY = 0, RX = 0, RY = 0 },
+									{ Linear = true, LockY = true, X = 0, Y = -0.330000013113022, LX = 0, LY = 0, RX = 0, RY = 0.0153333377043406 },
 									{ Linear = true, LockY = true, X = 0, Y = -0.284, LX = 0, LY = -0.0153333377043406, RX = 0, RY = -0.0833333333333334 },
 									{ Linear = true, LockY = true, X = 0, Y = -0.534, LX = 0, LY = 0.0833333333333334 }
 								}
@@ -68,11 +69,12 @@
 				Path1Displacement = BezierSpline {
 					SplineColor = { Red = 255, Green = 0, Blue = 255 },
 					KeyFrames = {
-						[0] = { 0, RH = { 30, 0.161440182142331 }, Flags = { Linear = true, LockedY = true } },
-						[90] = { 0.484320546426993, LH = { 60, 0.322880364284662 }, RH = { 160, 0.484320546426993 }, Flags = { Linear = true, LockedY = true } },
+						[0] = { 0, RH = { 16.6666666666667, 0 }, Flags = { Linear = true, LockedY = true } },
+						[50] = { 0, LH = { 33.3333333333333, 0 }, RH = { 63.3333333333333, 0.161440182142331 }, Flags = { Linear = true, LockedY = true } },
+						[90] = { 0.484320546426993, LH = { 76.6666666666667, 0.322880364284662 }, RH = { 160, 0.484320546426993 }, Flags = { Linear = true, LockedY = true } },
 						[300] = { 0.484320546426993, LH = { 230, 0.484320546426993 }, RH = { 302.666666666667, 0.484320546426993 }, Flags = { Linear = true, LockedY = true } },
 						[308] = { 0.484320546426993, LH = { 305.333333333333, 0.484320546426993 }, RH = { 310.333333333333, 0.511033677705827 }, Flags = { Linear = true, LockedY = true } },
-						[315] = { 0.564459940263495, LH = { 312.666666666667, 0.537746808984661 }, RH = { 323.333333333333, 0.709639960175663 }, Flags = { Linear = true, LockedY = true } },
+						[315] = { 0.564459940263496, LH = { 312.666666666667, 0.537746808984662 }, RH = { 323.333333333333, 0.709639960175664 }, Flags = { Linear = true, LockedY = true } },
 						[340] = { 1, LH = { 331.666666666667, 0.854819980087832 }, Flags = { Linear = true, LockedY = true } }
 					}
 				},
@@ -131,6 +133,20 @@
 						[268] = { 0, LH = { 266.666666666667, 0.333333333333333 }, Flags = { Linear = true } }
 					}
 				},
+				Merge7 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Merge6",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Text2",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 880, 266.544 } },
+				},
 				Merge6 = Merge {
 					Inputs = {
 						EffectMask = Input {
@@ -177,20 +193,6 @@
 						[90] = { 0, RH = { 113.333333333333, 0.333333333333333 }, Flags = { Linear = true, LockedY = true } },
 						[160] = { 1, LH = { 136.666666666667, 0.666666666666667 }, Flags = { Linear = true, LockedY = true } }
 					}
-				},
-				Merge7 = Merge {
-					Inputs = {
-						Background = Input {
-							SourceOp = "Merge6",
-							Source = "Output",
-						},
-						Foreground = Input {
-							SourceOp = "Text2",
-							Source = "Output",
-						},
-						PerformDepthMerge = Input { Value = 0, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 880, 266.544 } },
 				},
 				Background2 = Background {
 					Inputs = {
@@ -248,21 +250,6 @@
 						[90] = { 0, RH = { 113.333333333333, 0.333333333333333 }, Flags = { Linear = true, LockedY = true } },
 						[160] = { 1, LH = { 136.666666666667, 0.666666666666667 }, Flags = { Linear = true, LockedY = true } }
 					}
-				},
-				Rectangle7 = RectangleMask {
-					Inputs = {
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Center = Input { Value = { 0.5, 0.502 }, },
-						Width = Input { Value = 0.832, },
-						Height = Input { Value = 0.296, },
-						CornerRadius = Input { Value = 0.25, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 356.364, 214.5 } },
 				},
 				Text2 = TextPlus {
 					Inputs = {
@@ -341,6 +328,21 @@
 					},
 					ViewInfo = OperatorInfo { Pos = { 385, 189.214 } },
 				},
+				Rectangle7 = RectangleMask {
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input { Value = { 0.5, 0.502 }, },
+						Width = Input { Value = 0.832, },
+						Height = Input { Value = 0.296, },
+						CornerRadius = Input { Value = 0.25, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 356.364, 214.5 } },
+				},
 				TriangleRedPlay = Background {
 					NameSet = true,
 					Inputs = {
@@ -374,21 +376,6 @@
 						TopLeftBlue = Input { Value = 0.0901960784314, },
 					},
 					ViewInfo = OperatorInfo { Pos = { 190.121, 266.544 } },
-				},
-				Rectangle5 = RectangleMask {
-					Inputs = {
-						Filter = Input { Value = FuID { "Fast Gaussian" }, },
-						MaskWidth = Input { Value = 1920, },
-						MaskHeight = Input { Value = 1080, },
-						PixelAspect = Input { Value = { 1, 1 }, },
-						UseFrameFormatSettings = Input { Value = 1, },
-						ClippingMode = Input { Value = FuID { "None" }, },
-						Center = Input { Value = { 0.5, 0.502 }, },
-						Width = Input { Value = 0.832, },
-						Height = Input { Value = 0.296, },
-						CornerRadius = Input { Value = 0.25, },
-					},
-					ViewInfo = OperatorInfo { Pos = { 190.121, 233.544 } },
 				},
 				Rectangle6 = RectangleMask {
 					Inputs = {
@@ -441,6 +428,21 @@
 								}
 							} }
 					}
+				},
+				Rectangle5 = RectangleMask {
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input { Value = { 0.5, 0.502 }, },
+						Width = Input { Value = 0.832, },
+						Height = Input { Value = 0.296, },
+						CornerRadius = Input { Value = 0.25, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 190.121, 233.544 } },
 				}
 			},
 		}
